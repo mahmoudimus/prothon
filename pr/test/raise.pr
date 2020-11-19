@@ -1,0 +1,13 @@
+#!/usr/bin/env prothon
+
+try:
+	x = 1//0
+except (DivideByZero, Exception) as e:
+	if e.str_() != 'Divide by zero Error':
+		print 'error!'
+		sys.exit(1)
+		
+print """
+test passed
+"""
+

@@ -1,0 +1,35 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+top_builddir=@top_builddir@
+srcdir=@srcdir@
+
+include $(top_builddir)/Rules.mk
+
+MODULES = Prosist OS DBM
+
+ifeq (@HAVE_BOOST_REGEX@,yes)
+MODULES += Re
+endif
+
+ifeq (@HAVE_SQLITE@,yes)
+MODULES += SQLite
+endif
+
+all clean:
+	@set -e; for subdir in $(MODULES); do   \
+		$(MAKE) -C $$subdir $@; \
+	done
+
+install:
+	$(INSTALL_DIR) $(DESTDIR)$(PROTHON_DEFAULT_MODDIR)
+	@set -e; for subdir in $(MODULES); do   \
+		$(MAKE) -C $$subdir $@; \
+	done
+
+distclean:
+	@set -e; for subdir in $(MODULES); do   \
+		$(MAKE) -C $$subdir $@; \
+	done
+	rm -f Makefile

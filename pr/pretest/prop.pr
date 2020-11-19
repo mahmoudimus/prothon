@@ -1,0 +1,18 @@
+#!/usr/bin/env prothon
+
+object Proto1:
+	x_ = 6
+	prop x:
+		def get_():
+			return self.x_
+		def set_(v):
+			self.x_ = v
+			return v
+		def del_():
+			print "attempt to delete (correct response)"
+
+p = Proto1()
+p.x = 3
+print p.x
+del p.x
+

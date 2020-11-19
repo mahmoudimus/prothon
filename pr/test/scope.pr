@@ -1,0 +1,24 @@
+#!/usr/bin/env prothon
+
+print """
+This should print 
+1 2 3 4 5 6
+"""
+
+a = 1
+B = 2	
+def	f1():
+	c = 3	
+	d = 99
+	def	f2():
+		c = 99
+		d = 4	
+		print a, B, outer.c, d, self.x, caller.x
+	return f2
+
+object obj:
+	x =	5
+	f =	f1()
+	
+x=6
+obj.f()	

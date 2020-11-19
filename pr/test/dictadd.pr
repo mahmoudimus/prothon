@@ -1,0 +1,24 @@
+#!/usr/bin/env prothon
+
+d={}
+max = 50
+
+def Key(n):
+    return "B%02i" % n
+
+print "Loading dictionary ..."
+
+for n in max:
+    d[Key(n)] = True
+
+print "\nChecking dictionary ..."
+lost = False
+for n in max:
+    if Key(n) not in d:
+        lost = True
+        print "Key %s not found" % Key(n)
+
+if lost:
+    print d.keys().sort!()
+else:
+	print "\ntest passed"

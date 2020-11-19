@@ -1,0 +1,46 @@
+#!/usr/bin/env prothon
+
+# dbm.pr
+
+from DBM import DB
+
+db = DB("test.dbm", mode=DBM.RWTRUNCATE)
+
+if db.exists?('a'):
+	print 'err1'
+	sys.exit(1)
+	
+db.store('a', 'abcdef')
+db.store('c', 'xyz')
+db.store('b', '')
+
+if not db.exists?('a'):
+	print 'err2'
+	sys.exit(1)
+	
+if db.fetch('a') != 'abcdef':
+	print 'err3'
+	sys.exit(1)
+	
+if db.fetch('b') != '':
+	print 'err4'
+	sys.exit(1)
+	
+if db.fetch('c') != 'xyz':
+	print 'err5'
+	sys.exit(1)
+	
+list = []
+k = db.firstKey()
+while k:
+	list.append!(k)
+	k = db.nextKey(k)
+
+list.sort!()
+
+if list != ['a','b','c']:
+	print 'err6'
+	sys.exit(1)
+	
+print '\nall tests passed\n'
+

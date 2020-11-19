@@ -1,0 +1,15 @@
+#!/usr/bin/env prothon
+
+for i in 5:
+	print i
+	
+a, b = (1,2)
+print a,b
+
+gen g():
+	for i in 3:
+		y = (2*i, 3*i)
+		yield y
+	
+for a, b in g():
+	print a,b

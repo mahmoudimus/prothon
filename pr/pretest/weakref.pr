@@ -1,0 +1,35 @@
+#!/usr/bin/env prothon
+
+x = []
+weakref = WeakRef(x)
+print WeakRef
+print weakref
+print weakref.ref()
+print weakref.exists?()
+print WeakRef.READ
+print WeakRef.WRITE
+print WeakRef.DELETE
+
+print "weakref.flags()", weakref.flags()
+
+def callbk(flgs):
+	if flgs & WeakRef.READ: print 'READ'
+	if flgs & WeakRef.WRITE: print 'WRITE'
+	if flgs & WeakRef.DELETE: print 'DELETE'
+cb = callbk{weakref}
+
+weakref.notify(cb, flags = WeakRef.READ | WeakRef.WRITE | WeakRef.DELETE)
+
+print "before print read test"
+print x
+
+print 'switching to write and del only'
+
+weakref.notify(cb, flags = WeakRef.WRITE | WeakRef.DELETE)
+print 'after switching to write and del only'
+
+print "before write test"
+x.append!(1)
+
+print "before delete test"
+del x

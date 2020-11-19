@@ -1,0 +1,31 @@
+#!/usr/bin/env prothon
+
+# bin.pr
+
+x = Exception
+
+object obj(String, Int):
+        Int.init_{obj}(99)      # inits using second proto
+        print Int.str_{obj}()   # prints 99
+        
+try:
+    with obj: Int.init_{obj}(99)   # init Int a second time
+except x as e: print e    # throws "object has binary data, expected none"
+
+try:
+    obj.init_('abc') # init as String
+except x as e: print e     # throws "object has binary data, expected none"
+
+L = newObject(List) # L is uninitialized list
+
+L.init_(1,2,3)
+print L             # prints [1, 2, 3] 
+
+L.init_(4,5,6)
+print L             # prints [4, 5, 6] 
+
+d = {1:2, 'a':'b'}
+print d             # prints {1:2, 'a':'b'}
+
+d.init_(c = 'd', f = 'g')
+print d             # prints {f:'g', c:'d'} 

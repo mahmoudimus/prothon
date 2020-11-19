@@ -1,0 +1,19 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+SUBDIRS = src modules
+
+all install clean: FORCE
+	@set -e; for subdir in $(SUBDIRS); do	\
+		$(MAKE) -C $$subdir $@;	\
+	done
+
+distclean: FORCE
+	@set -e; for subdir in $(SUBDIRS); do   \
+		$(MAKE) -C $$subdir $@; \
+	done
+	rm -f config.log config.status Makefile config.cache \
+		include/config.h Rules.mk libtool
+
+FORCE:

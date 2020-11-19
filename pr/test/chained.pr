@@ -1,0 +1,33 @@
+#!/usr/bin/env prothon
+
+print "these should all be true\n"
+
+print 1 < 2 < 3 < 5 < 199
+
+print 10 < 20 <= 30 <= 30 >= 30 >= 20 > 10
+
+print 1 < 2 > 1 < 2 > 1
+
+print 1 >= 1 == 1 != 2 == 2 > 1 <= 1 <= 2
+
+print "\n\nthese should all be false\n"
+
+print 1 < 2 < 3 < 2 < 199
+
+print 10 < 20 <= 30 <= 29 >= 30 >= 20 > 10
+
+print 1 < 2 > 2 < 2 > 1
+
+print 1 >= 1 == 2 != 2 == 2 > 1 <= 1 <= 2
+
+def f(i):
+	print i, eol=' '
+	return i
+	
+print "\n\nThis should print 0 1 2\n"
+f(0) < f(1) < f(2)
+
+print "\n\nThis should print 0 1\n"
+f(0) > f(1) < f(2)
+
+print

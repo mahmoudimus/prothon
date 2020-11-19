@@ -1,0 +1,29 @@
+#!/usr/bin/env prothon
+
+print """
+
+following should print
+
+f1 a 
+f2 b 
+f2 c 
+f1 d 
+f2 e 
+"""
+def f1(x=''):
+	print 'f1 '+x
+
+def f2(y=''):
+	print 'f2 '+y
+	
+f = newObject(f1)
+f.init_(f2)
+
+f1('a')
+f2('b')
+f('c')
+
+g = Func(f1)
+h = Func(f2)
+g('d')
+h('e')

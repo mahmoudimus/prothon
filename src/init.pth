@@ -1,0 +1,17 @@
+
+# init.pth
+
+# This is loaded automatically whenever prothon loads
+
+# these are added to sys.path
+
+c:\prothon\modules\re\debug
+c:\prothon\modules\prosist\debug
+c:\prothon\modules\sqlite\debug
+c:\prothon\modules\OS\debug
+c:\prothon\modules\DBM\debug
+
+# this is executed before Main as module PthMod1
+
+#import re
+

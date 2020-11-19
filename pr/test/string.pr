@@ -1,0 +1,36 @@
+#!/usr/bin/env prothon
+
+def err(n):
+	print 'test',n,'failed'
+	sys.exit(1)
+
+x = "abcdefghijklm"
+
+if "c:bc:acegi:mlkjih" !=  x[2]+':'+x[1:3]+':'+x[0:10:2]+':'+x[12:6:-1]:
+	err(1)
+
+x = "abcdef"
+
+if "e:de:def:ab:fed:fedcba:abcdef" !=  x[-2]+':'+x[-3:-1]+':'+x[3:]+':'+x[:2]+':'+x[:2:-1]+':'+x[::-1]+':'+x[:]:
+	err(2)
+
+if 3 !=  len("abc"):  err(3)
+
+if "ABC" !=  "abc".upper(): err(4)
+
+if "abc" !=  "ABC".lower(): err(5)
+
+if "Abc def" !=  "abc def".capitalize(): err(6)
+
+if "Abc Def" !=  "abc def".capWords(): err(7)
+
+if "<x >" != '<'+" x ".lStrip()+'>': err(8)
+
+if "< x>" !=  '<'+" x ".rStrip()+'>': err(9)
+
+if "<x>" !=  '<'+" x ".strip()+'>': err(10)
+
+print '\nall tests passed\n'
+
+
+

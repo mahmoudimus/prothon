@@ -1,0 +1,52 @@
+#!/usr/bin/env prothon
+
+# dict.pr
+
+def err(str):
+    print str
+    sys.exit(1)
+
+d = {1:2}
+if d.keys()   != [1]  : err( 'error in keys' )
+if d.values() != [2]  : err( 'error in values' )
+if d.get(1)   !=  2   : err( 'error1 in get' )
+if d.get(2)   != None : err( 'error2 in get' )
+if d.get(3,4) !=  4   : err( 'error3 in get' )
+if d.get(3,5) !=  5   : err( 'error4 in get' )
+if d.setDefault!(3,4) !=  4   : err( 'error5 in setdefault' )
+if d.get(3,5) !=  4   : err( 'error6 in get' )
+if 3 not in d: err( 'error 7 in not in' )
+
+d = {1:2, 3:4}
+e = d.copy()
+   
+if d.items() != e.items():
+    err( 'error1' )
+  
+if len(e.items()) != 2:
+    err( 'error2' )
+
+d.clear!()
+
+d = {1:2}
+d.update!({3:4})
+if d.items() != e.items():
+    err( 'error3' )
+
+if not e.hasKey?(1) or e.hasKey?(2): err( 'error4' )
+
+dd = Dict(a=1)
+
+if $a  not in dd: err( 'error5' )
+if "a" not in dd: err( 'error6' )
+
+print 'all tests passed'
+
+print """
+The following should be:  
+1 (1, 2) 3 (3, 4)
+"""
+
+for i in e: print i, d.popItem!(),eol=' '
+
+print '\n'

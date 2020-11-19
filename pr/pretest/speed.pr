@@ -1,0 +1,7 @@
+#!/usr/bin/env prothon
+
+l=List()
+for i in 10000:
+	l.append!("ben")
+	if not (i % 100):
+		print i

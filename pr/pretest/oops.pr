@@ -1,0 +1,19 @@
+#!/usr/bin/env prothon
+
+Emp_proto = Object()
+
+with Emp_proto:
+
+	name = "<proto name>"
+	
+	def init_(name):
+		self.name = name
+		hello()
+
+	def hello():
+		print "My name is:", self.name	
+			
+
+Emp_proto.hello()
+emp = Emp_proto("Jim")
+emp.hello()

@@ -1,0 +1,22 @@
+#!/usr/bin/env prothon
+
+# listcomp.pr
+
+lst = [x for x in 4]
+if lst != [0, 1, 2, 3]:
+	print "err1"
+	sys.exit(1)
+	
+lst = [(x,y) for x in 2 for y in 2]
+if lst != [(0, 0), (0, 1), (1, 0), (1, 1)]:
+	print "err2"
+	sys.exit(1)
+	
+lst = [(x,y) for x in 4 if x%2==0 for y in 4 if y%2==1]
+if lst != [(0, 1), (0, 3), (2, 1), (2, 3)]:
+	print "err3"
+	sys.exit(1)
+
+print
+print "all tests passed"
+print

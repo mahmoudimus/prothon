@@ -1,0 +1,39 @@
+#!/usr/bin/env prothon
+
+import re
+
+def findAll(r,s):
+	result=[]
+	def foundOne(mo): 
+		outer.result.append!(mo.group())
+		return ''
+	r.sub(foundOne, s)
+	return result
+
+r = re.compile("m..k")
+
+s = 'this mark likes to muck around in minks'
+
+print findAll(r, s)
+
+print r.findAll(s)
+
+print r.split(s, 2)
+
+mo = r.search(s, 10)
+
+print mo.group(), mo.groups()
+
+r = re.compile(" (m..k) (l..e)")
+
+mo = r.search(s, 2, 20)
+
+print mo.group(), mo.groups(), mo.expand(r'grp1:<\1> grp2:<\2>')
+
+print "\n-------- above should look like ...  -------------\n"
+
+print "['mark', 'muck', 'mink']"
+print "['mark', 'muck', 'mink']"
+print "['this ', ' likes to ', ' around in minks']"
+print "mark ('mark')"
+print " mark like (' mark like', 'mark', 'like') grp1:<mark> grp2:<like>"

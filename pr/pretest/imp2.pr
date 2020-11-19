@@ -1,0 +1,13 @@
+#!/usr/bin/env prothon
+
+# imp2.pr
+
+def func(a):
+	print a
+
+	
+if isMain?():
+	print """
+This is not meant to run as a test.  This is a loadable module.
+"""
+	

@@ -1,0 +1,19 @@
+#!/usr/bin/env prothon
+
+def func():
+	print self
+	
+bf33 = func{33}
+bf66 = func{66}
+print bf33				#   <func:93b7c0:bound:33> 
+print bf66				#	<func:93b7e0:bound:66>
+
+bf33()					# 33
+bf66()					# 66
+bf33{77}()				# 77
+bf66{88}()				# 88
+
+print bf33				#   <func:93b7c0:bound:33>
+print bf33.bindObj_		#	33
+del bf33.bindObj_
+print bf33				#  <func:93b7c0>

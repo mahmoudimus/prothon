@@ -1,0 +1,30 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+srcdir=@srcdir@
+top_builddir=@top_builddir@
+
+include $(top_builddir)/Rules.mk
+
+BOOST_REGEX_LIBS = @BOOST_REGEX_LIBS@
+
+MODULE_NAME=Re
+
+TARGET = $(MODULE_NAME).la
+
+OBJS = $(MODULE_NAME).lo
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LINK_MODULE) $(BOOST_REGEX_LIBS) $(OBJS) -o $@
+
+install: $(TARGET)
+	$(LIB_INSTALL) $(TARGET) $(DESTDIR)$(PROTHON_DEFAULT_MODDIR)/
+
+distclean: clean
+	rm -f Makefile
+
+clean:
+	rm -fr *.o *.lo *.la .libs

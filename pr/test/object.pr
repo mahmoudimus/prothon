@@ -1,0 +1,22 @@
+#!/usr/bin/env prothon
+
+# object.pr
+
+object Point(Object):
+	x = 0; y = 0
+	def init_(x, y):
+		self.x=x; self.y=y
+	def move(xofs, yofs):
+		self.x += xofs; self.y += yofs
+		print self
+	def str_():
+		return '<'+self.x+':'+self.y+'>'
+		
+print
+print "Should print..."
+print '<5:50>'
+print '<15:150>'
+print
+p = Point(5, 50)
+print p
+p.move(10, 100)

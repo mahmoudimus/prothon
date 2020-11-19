@@ -1,0 +1,75 @@
+#!/usr/bin/env prothon
+
+# prosist.pr
+
+print 
+print ' NOTE: This test is not yet easily readable for success or failure'
+print '       For now consider not locking up a success :) '
+print
+import Prosist
+
+b = 7.3
+
+c = "This is the original data"
+
+d = ('i', 'am', 'a', 'tuple')
+
+e = 1234
+
+f = {"i":"am", "a":"dict"}
+
+g = Object()
+g.a = 1
+g.b = '2'
+g.c = {'3':{4:'5'},'4':None}
+
+a = {1:b, 2:c, 3:[d,e], (4,5): f, 6:g}
+
+db = Prosist('test.pdb', root=a, mode=Prosist.RWTRUNCATE)
+
+a[1] = 999
+a[1] = b
+g.b = [11,22]
+
+a[(4,5)] = {'i':'am', 'a':'different', 'dict':'!'}
+a[2] = "This is the data that is going to be rolled back"
+
+print
+print a, a[6].a , a[6].b , a[6].c 
+
+
+db.rollBack()
+
+print
+print a, a[6].a , a[6].b , a[6].c 
+
+
+a[1] = 999
+a[1] = b
+g.b = [11,22]
+
+a[(4,5)] = {'i':'am', 'a':'different', 'dict':'!'}
+a[2] = 'The is the data that is going to be committed'
+
+db.commit()
+
+print
+print a, a[6].a , a[6].b , a[6].c 
+
+db.close()
+db = Prosist('test.pdb')
+x = db.root
+db.close()
+
+print
+print 'these two should match .. '
+print
+print a, a[6].a , a[6].b , a[6].c 
+
+del g.a, g.b, g.c, g, d, c, b, e, f['i'], f['a'], f, a[1], a[2], a[3], a[(4,5)], a[6], a
+a = 1
+
+print
+print x,eol=' '
+y = x[6]
+print y.a, y.b, y.c

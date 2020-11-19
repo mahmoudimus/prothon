@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "src", "src\src.vcproj", "{5A0B580F-0836-4D49-B794-CE449B5BEC32}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "re", "modules\re\re.vcproj", "{1B843C72-E875-45A0-BA0E-09B47B274708}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prosist", "modules\Prosist\Prosist.vcproj", "{ED1B9F21-0026-4156-881C-4F083129E75D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SQLite", "modules\SQLite\SQLite.vcproj", "{32E91FEE-E4CE-4672-8852-4C35087510AE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OS", "modules\OS\OS.vcproj", "{7F135CB2-69FB-4AD9-A1F3-ADD9F1C2E400}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbm", "modules\dbm\dbm.vcproj", "{9178A30F-B02E-4D57-9786-D417A42CD026}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{5A0B580F-0836-4D49-B794-CE449B5BEC32}.Debug.ActiveCfg = Debug|Win32
+		{5A0B580F-0836-4D49-B794-CE449B5BEC32}.Debug.Build.0 = Debug|Win32
+		{5A0B580F-0836-4D49-B794-CE449B5BEC32}.Release.ActiveCfg = Release|Win32
+		{5A0B580F-0836-4D49-B794-CE449B5BEC32}.Release.Build.0 = Release|Win32
+		{1B843C72-E875-45A0-BA0E-09B47B274708}.Debug.ActiveCfg = Debug|Win32
+		{1B843C72-E875-45A0-BA0E-09B47B274708}.Debug.Build.0 = Debug|Win32
+		{1B843C72-E875-45A0-BA0E-09B47B274708}.Release.ActiveCfg = Release|Win32
+		{1B843C72-E875-45A0-BA0E-09B47B274708}.Release.Build.0 = Release|Win32
+		{ED1B9F21-0026-4156-881C-4F083129E75D}.Debug.ActiveCfg = Debug|Win32
+		{ED1B9F21-0026-4156-881C-4F083129E75D}.Debug.Build.0 = Debug|Win32
+		{ED1B9F21-0026-4156-881C-4F083129E75D}.Release.ActiveCfg = Release|Win32
+		{ED1B9F21-0026-4156-881C-4F083129E75D}.Release.Build.0 = Release|Win32
+		{32E91FEE-E4CE-4672-8852-4C35087510AE}.Debug.ActiveCfg = Debug|Win32
+		{32E91FEE-E4CE-4672-8852-4C35087510AE}.Debug.Build.0 = Debug|Win32
+		{32E91FEE-E4CE-4672-8852-4C35087510AE}.Release.ActiveCfg = Release|Win32
+		{32E91FEE-E4CE-4672-8852-4C35087510AE}.Release.Build.0 = Release|Win32
+		{7F135CB2-69FB-4AD9-A1F3-ADD9F1C2E400}.Debug.ActiveCfg = Debug|Win32
+		{7F135CB2-69FB-4AD9-A1F3-ADD9F1C2E400}.Debug.Build.0 = Debug|Win32
+		{7F135CB2-69FB-4AD9-A1F3-ADD9F1C2E400}.Release.ActiveCfg = Release|Win32
+		{7F135CB2-69FB-4AD9-A1F3-ADD9F1C2E400}.Release.Build.0 = Release|Win32
+		{9178A30F-B02E-4D57-9786-D417A42CD026}.Debug.ActiveCfg = Debug|Win32
+		{9178A30F-B02E-4D57-9786-D417A42CD026}.Debug.Build.0 = Debug|Win32
+		{9178A30F-B02E-4D57-9786-D417A42CD026}.Release.ActiveCfg = Release|Win32
+		{9178A30F-B02E-4D57-9786-D417A42CD026}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+#!/usr/bin/env prothon
+
+def New(proto, *args, **kwargs):
+    newObj = newObject(proto)
+    newObj.init_(*args, **kwargs)
+    return newObj
+
+p = Object()
+with p:
+    x = None
+    def init_(x):
+        self.x = x
+    def str_():
+        return '*'+self.x+'*'
+
+print """
+
+Should print ...
+*1*
+*a*
+
+"""
+
+x = New(p, 1)
+print x
+
+y = New(p, 'a')
+print y

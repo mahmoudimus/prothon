@@ -1,0 +1,33 @@
+#!/usr/bin/env prothon
+
+def f():
+    try:
+        return 9
+    finally:
+        print "Finally"
+
+print "-- The output should be --"
+print "Finally"
+print 9
+print "1)"
+print "Finally"
+print "2)"
+print "Finally"
+print "Name Error raised."
+print "--------------------------"
+print f()
+
+def f(doRaise):
+    try:
+        if doRaise:
+            raise NameError
+    finally:
+        print "Finally"
+
+try:
+    print "1)"
+    f(False)
+    print "2)"
+    f(True)
+except NameError:
+    print "Name Error raised."

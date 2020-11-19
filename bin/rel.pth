@@ -1,0 +1,25 @@
+
+# rel.pth
+
+# This file and any other files contained in 
+# the same directory as prothon.exe that end in .pth,
+# are read by prothon.exe, the prothon interpreter, when
+# the interpreter starts running.
+
+# These .pth files may contain blank lines, comment lines that
+# start with #, lines that are valid directory paths, and prothon
+# import statements.
+
+# Directory paths are added to the list Sys.path.  Sys.path is used
+# by prothon when searching for packages and modules to load.  It
+# is searched in order through this list.
+
+# Import commands are executed as they are encountered in the .pth
+# file so make sure the needed path directories are specified first.
+
+# this period adds this prothon home directory to Sys.path
+.
+
+# import commands would follow here
+
+#import Re

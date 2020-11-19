@@ -1,0 +1,42 @@
+#!/usr/bin/env prothon
+
+def err(n):
+	print "\n test {n} failed".fmt()
+	sys.exit(1)
+
+z=0
+y=0
+done = False
+def f(x=y):
+	outer.z = x
+	outer.done = True
+	
+y=1
+f(0)
+if z != 0: err(1)
+
+y=2
+f()
+if z != 2: err(2)
+
+y=3
+f()
+if z != 3: err(3)
+
+n=[]
+n.g=f
+y=4
+n.g(9)
+if z != 9: err(4)
+
+n.g()
+y=5
+done = False
+Thread(f)
+while not done:
+	Sleep(0.1)
+if z != 5: err(5)
+
+print """
+all tests passed
+"""

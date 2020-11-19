@@ -1,0 +1,18 @@
+#!/usr/bin/env prothon
+
+stdOut = sys.stdOut
+stdIn = sys.stdIn
+stdErr = sys.stdErr
+
+stdOut.write("Enter your name: ")
+
+name = stdIn.readLine()
+
+stdOut.write("Hello " + name)
+
+stdErr.write("This is written on stdErr\n")
+
+#print "Opening test file for stdOut"
+#sys.setStdOut(sys("stdOut.txt", "w+"))
+#stdOut.write("Should still go to stdOut\n")
+#sys.stdOut.write("Should go to stdOut.txt file\n")

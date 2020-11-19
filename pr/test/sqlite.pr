@@ -1,0 +1,72 @@
+#!/usr/bin/env prothon
+
+# sqlite.pr
+
+import sqlite
+
+conn = sqlite.connect('test.db')
+curs = conn.cursor()
+
+try: curs.execute!("drop table tbl1")
+except Exception: pass
+try: curs.execute!("drop table tbl2")
+except Exception: pass
+
+curs.execute!("create table tbl1 (a INTEGER PRIMARY KEY, b INTEGER, c INTEGER)")
+curs.execute!("create table tbl2 (d INTEGER PRIMARY KEY, a INTEGER, e INTEGER)")
+
+curs.execute!("insert into tbl1 values (1, 10, 100)")
+
+curs.execute!("insert into tbl2 values (1, 1, 101)")
+curs.execute!("insert into tbl2 values (2, 1, 102)")
+curs.execute!("insert into tbl2 values (3, 1, 103)")
+curs.execute!("insert into tbl2 values (4, 1, 104)")
+curs.execute!("insert into tbl2 values (5, 1, 105)")
+curs.execute!("insert into tbl2 values (6, 1, 106)")
+curs.execute!("insert into tbl2 values (7, 1, 107)")
+curs.execute!("insert into tbl2 values (8, 1, 108)")
+curs.execute!("insert into tbl2 values (9, 1, 109)")
+
+curs.execute!("insert into tbl1 values (2, 20, 200)")
+
+curs.execute!("insert into tbl2 values (10, 2, 201)")
+curs.execute!("insert into tbl2 values (11, 2, 202)")
+curs.execute!("insert into tbl2 values (12, 2, 203)")
+curs.execute!("insert into tbl2 values (13, 2, 204)")
+curs.execute!("insert into tbl2 values (14, 2, 205)")
+curs.execute!("insert into tbl2 values (15, 2, 206)")
+curs.execute!("insert into tbl2 values (16, 2, 207)")
+curs.execute!("insert into tbl2 values (17, 2, 208)")
+curs.execute!("insert into tbl2 values (18, 2, 209)")
+
+curs1 = conn.cursor()
+curs2 = conn.cursor()
+
+curs1.execute!("select * from tbl1")
+
+if curs1.rowCount() != 2: 
+	print 'curs1.rowCount() error'
+	sys.exit(1)
+
+rows1 = curs1.fetchAll()
+for row in rows1:
+	curs2.execute!('select * from tbl2 where a='+row[0])
+	if curs2.rowCount() != 9: 
+		print 'curs2.rowCount() error, rows1:', rows1, 'rowCount:',curs2.rowCount()
+		sys.exit(1)
+	for i in 4:
+		row2 = curs2.fetchOne()
+		if row2[2] != ''+(101+i) and row2[2] != ''+(201+i):
+			print 'row2[2] error'
+			sys.exit(1)
+	rows2 = curs2.fetchMany(3)
+	if len(rows2) != 3: 
+		print 'len(rows2) error1, rows2:', rows2
+		sys.exit(1)
+	rows2 = curs2.fetchMany(3)
+	if len(rows2) != 2: 
+		print 'len(rows2) error2'
+		sys.exit(1)
+conn.close()
+
+print '\nall tests passed\n'

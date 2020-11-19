@@ -1,0 +1,13 @@
+
+Mark's Release checklist
+
+1) Test all pr files
+2) Check prothon.h for debug flags and NEXT build number
+3) Do win32 build with VC set to release
+4) prepare changes.txt with NEXT build number
+5) Commit with *** release build *** comment
+6) build zip file and upload
+7) notify ben that release is ready for him
+8) wait for ben's ack that linux test's work and that
+   he has updated dowload section of website
+9) update news, docs, www.zip, and announcements

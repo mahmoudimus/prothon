@@ -1,0 +1,44 @@
+#!/usr/bin/env prothon
+
+object ModInt(Int): 
+    modulo = 10
+    def init_(i=0): 
+        Int.init_{self}(i % self.modulo)
+    def add_(other):
+        if self.modulo != other.modulo: 
+            raise TypeError 
+        return (self.protos_[0])(Int.add_{self}(other) % self.modulo) 
+
+object Mod16Int(ModInt):
+    modulo = 16
+
+object Mod16IntC(Mod16Int):
+    cache = {}
+    def call_(i):
+        i = i % self.modulo
+        if i in cache:
+            print  cache[i] , 'from cache'
+            return cache[i]
+        obj = super.call_(i)
+        #obj = Object.call_{self}(i)
+        cache[i] = obj
+        print obj, 'new'
+        return obj
+    def init_(i):
+        return Mod16Int.init_{self}(i)
+
+print """
+
+Should print
+11 new
+8 new
+8 from cache
+3 new
+11 from cache
+11 + 8 + 8 = 11
+"""
+
+i = Mod16IntC(27)
+j = Mod16IntC(8)    
+k = Mod16IntC(8)    
+print "{0} + {1} + {2} = {3:02}".fmt(i, j, k, (i + j + k))

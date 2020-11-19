@@ -1,0 +1,367 @@
+
+----------------------- TO-DO (highest priority first) ------------------------
+
+--- change file.setStdout to property
+--- use special stdout for each Main
+
+--- getAttr(name), setAttr(name, value), delAttr(name)
+
+--- thread keyword for param improvement?
+--- OSThread, Thread, and Gate
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002124.html
+--- lock keyword?
+
+--- call_ str_ fix?
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002442.html
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002444.html
+--- class keyword
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002445.html
+--- type keyword?  interfaces?
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002508.html
+	
+--- assignment as expression ???
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002160.html
+		
+--- implement from Module import * ???
+
+--- implement 1xc3fe ?
+--- implement taint attribute on strings, unTaint() method, respect in .fmt, eval, exec
+
+--- Module doc strings & Object doc strings
+
+--- unicode module - codecs
+		mask off top 3 bits
+		http://www.prothon.org/pipermail/prothon-user/2004-June/001913.html
+		http://www.prothon.org/pipermail/prothon-user/2004-June/001895.html
+		http://www.prothon.org/pipermail/prothon-user/2004-June/001918.html
+		http://www.unicode.org/versions/Unicode4.0.0/ch05.pdf
+--- Unicode file name support
+--- add \u0000 \U00000000 and \N{name} esc sequences
+
+--- add Object.data_ (builtins-databytes.c)
+--- Bytes methods?  copy struct module?
+
+--- raise exception_object, doc_object
+--- allow tracebacks in the constructors to exception objects or raise command
+--- Traceback objects (stack trace of an exception), exceptions should show function names
+--- hide fake file names
+
+--- metaclasses not supported ???
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002409.html
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002480.html
+		
+--- put in skeleton code for + _"abc"
+--- GNU message catalog _"abc" strings
+--- change all strings to resource file
+
+--- add conditional expression "if C then x else y"
+
+--- pretty print
+	http://www.prothon.org/pipermail/prothon-user/2004-June/002112.html
+--- help() in interactive console()
+
+--- support list and dictionary object params directly in string.fmt() ???
+
+--- add resolution order combining prototypes and scope chains
+
+--- import (string variable)
+
+--- support long ints & Bytes in dbm & prosist
+
+--- Swig, Boost, Pyrex and/or other (what GTK port used?) backend
+
+--- concatenate adjacent strings  "abc" "def" -> "abcdef"
+
+--- allow strings to compare with symbols
+
+--- Auto-documenter app
+--- add static checking like interfaces to doc tool
+
+--- networking code -- web access demonstration of security
+--- security flaw - modules can access each other by name
+
+--- name_ and file_ (always absolute paths)
+
+--- nesting  /* .. */ comments 
+
+--- -m -l cmd-line options missing
+--- memory bounds -> mem-mgr priorities
+
+--- plug memory leaks -- add del_unlocks
+
+--- switch mro method to C3
+
+--- C API for profiling
+
+--- credit Ruby
+
+--- Does simple 1+2 expr evaluation create objects?  If so, need shortcuts to speed it up
+
+--- clean up prt_code_line mess with some cleaner coding technique
+
+--- reduce array of act params passed to function to only odd entries
+
+--- thread monitor function
+
+--- improve torture with list and dict tortures, random walk against new end
+
+----------------------- TUTORIAL TO-DO ------------------------
+	
+	iter_ (for loop)
+	attrs_
+	protos_
+	super
+	modules
+	Inheriting from binary objects, uninitialized objects
+	print statement
+	import
+	packages 
+	list comprehensions
+	try/finally
+	security system
+	files, stdxxx
+	console line editing
+	str_, call_
+
+----------------------- NON_CODING TO-DO ------------------------
+
+--- preps
+
+--- apt-get
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002450.html
+
+--- wiki
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002431.html
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002443.html
+
+------------------------ OPTIMIZATION TO_DO -----------------------------------
+
+--- Lazy string concatenation
+--- Improve garbage collector cache behavior
+--- combine pr_malloc/garbage collector, remove obj_t linked list
+		http://www.cs.kent.ac.uk/people/staff/rej/gc.html#Book
+		http://www.prothon.org/pipermail/prothon-user/2004-June/002534.html
+
+---------------- Ideas to consider for inclusion ------------------------------
+
+Psyco in std interpreter?
+
+multiple modules per file?
+
+add function version of print (write)
+
+sets and other zephyr email items 
+
+remove \ continuation ?
+
+Python add-on C module adapter for Prothon
+auto python -> prothon source converter
+
+add/replace int and float single decimal type with bounded precision and floating point. 
+				http://www.python.org/peps/pep-0327.html
+
+Syntax extension modifier -- language spec?
+
+Guido's regret list for Python
+	drop 3-way compare? (but... comparing lists) (what is this MCH?)
+	use (...) continuation
+	drop lambda -- DONE
+	drop map(), filter()
+	drop reduce()
+	drop `x`, repr()
+	print should've been a function
+		- write(x, y, z)
+		– writeln(x, y, z)
+		– spaces between items controlled by keyword arg
+	make range() return an iterator
+	drop buffer()
+	raw_input(): use sys.stdin.readline()
+	input(): use eval(sys.stdin.readline())
+	callable(): just call it, already
+	execfile(), reload(): use exec()
+	compile(): put in sys
+	exec should be a function
+	drop locals(), globals(), vars()
+	need more ways to convert float to int
+		(round, truncate-towards-zero, floor, ceil)
+	need differentiate to __int__ which
+		truncates and __int__ which doesn't
+
+
+
+------------------------------ speedups ---------------------------------------
+
+Inline asm for lock code up to wrlock acquire and access check
+
+Global prototype lookup cache
+
+Copy garbage collection good for small objects
+
+------------------------------ bugs -------------------------------------------
+parser
+	bison warnings
+	parse error in loaded module doesn't cause error
+
+------------------------------ diff from python -------------------------------
+
+x'00' strings
+Argv is an attribute in Main, not sys; sys.argv is more complicated version
+_ in nums for appearance  0x7fff_ffff_ffff_ffff is most positive Int in prothon
+5. and 5.e10 not valid, must be 5.0 and 5.0e10 (or 5e10), so that 48.chr() parses properly
+var scoping: x X . ^ & @
+with keyword
+gen keyword
+! at end of symbols
+string cat auto-converts right-param to string
+/ always real, must use // for floor div
+<> not supported
+tags on for and while loops
+only tabs for indents, extra indents give continuation of line
+no ref counting, but do need del_lock and rd-wr locking
+pass not really needed, empty statements allowed
+attribute inheritance gives access to built-ins in root_globals, not built-ins module
+for x in 5:
+support /* */ comments	
+
+--------------  built-in functions ----------------
+
+
+__import__(name[, globals[, locals[, fromlist]]])
+                Import module within the given context (see lib ref for more details)
+
+abs(x)          Return the absolute value of a number
+
+apply(f, args[, keywords])
+                Call func/method <f> with args <args> and optional keywords
+
+
+coerce(x,y)     Return a tuple of the two numeric arguments converted to
+                a common type.
+
+compile(string, filename, kind) 
+                Compile <string> into a code object.
+                <filename> is used in error message, can be any string. It is
+                usually the file from which the code was read, or eg. '<string>'
+                if not read from file.
+                <kind> can be 'eval' if <string> is a single stmt, or 'single'
+                which prints the output of expression statements that
+                evaluate to something else than "None" or be 'exec'.
+
+complex(real[, image])
+                Build a complex object (can also be done using J or j suffix,
+                e.g. 1+3J)
+delattr(obj, name)
+                deletes attribute named <name> of object <obj> <=> del obj.name
+dir([object])   If no args, return the list of names in current local
+                symbol table. With a module, class or class instance
+                object as arg, return list of names in its attr dict.
+
+divmod(a,b)     Returns tuple of (a/b, a%b)
+
+eval(s, globals, locals)
+                Eval string <s> in (optional) <globals>, <locals>. 
+                <s> must have no NULL's or newlines. <s> can also be a
+                code object.
+
+                E.g.: x = 1; incr_x = eval('x + 1')
+
+execfile(file[, globals[, locals]])
+                Execute a file without creating a new module, unlike import.
+
+float(x)        Convert a number or a string to floating point. 
+
+                
+globals()       Returns a dictionary containing current global variables.
+
+hasattr(object, name)
+                Returns true if <object> has attr called <name>.
+
+hash(object)    Return the hash value of the object (if it has one)
+
+hex(x)          Convert a number to a hexadecimal string.
+
+id(object)      Return a unique 'identity' integer for an object.
+
+input([prompt]) Prints prompt, if given. Reads input and evaluates it.
+int(x)          Convert a number or a string to a plain integer.
+
+intern(aString)
+                Enter <String> in the table of "interned strings" and
+                return the string. Interned strings are 'immortals'.
+isinstance(obj, class)
+                return true if <obj> is an instance of <class>
+issubclass(class1, class2)
+                return true if <class1> is derived from <class2>
+
+list(sequence)
+                Convert <sequence> into a list. If already a list,
+                return a copy of it.
+locals()        Return a dictionary containing current local variables.
+
+long(x)         Convert a number or a string to a long integer.
+
+max(s)          Return the largest item of a non-empty sequence.
+
+min(s)          Return the smallest item of a non-empty sequence.
+
+oct(x)          Convert a number to an octal string.
+
+pow(x, y [, z]) Return x to power y [modulo z]. See also ** operator.
+
+range(start [,end [, step]])
+                return list of ints from >= start and < end. 
+                With 1 arg, list from 0..<arg>-1
+                With 2 args, list from <start>..<end>-1
+                With 3 args, list from <start> up to <end> by <step>
+
+raw_input([prompt])
+                Print prompt if given, then read string from std
+                input (no trailing \n).
+
+reduce(f, list [, init])
+                Apply the binary function <f> to the items of
+                <list> so as to reduce the list to a single value.
+                If <init> given, it is "prepended" to <list>.
+
+reload(module)  Re-parse and re-initialize an already imported module.
+                Useful in interactive mode, if you want to reload a
+                module after fixing it. If module was synactically
+                correct but had an error in initialization, must
+                import it one more time before calling reload().
+
+round(x,n=0)    Return the floating point value x rounded to n digits
+                        after the decimal point.
+
+setattr(object, name, value)
+                This is the counterpart of getattr().
+                setattr(o, 'foobar', 3) <=> o.foobar = 3
+                Create attribute if it doesn't exist!
+
+slice([start,] stop[, step])
+                Return a slice object representing a range, with R/O
+                attributes: start, stop, step.
+
+str(object)     Return a string containing a nicely printable
+                representation of an object.
+
+tuple(sequence) Creates a tuple with same elements as <sequence>. If
+                already a tuple, return itself (not a copy).
+
+type(obj)       Return a type object [see module types]representing the
+                type of <obj>. E.g., import types
+                if type(x) == types.StringType: print 'It is a string'
+
+vars([object])  Without arguments, return a dictionary corresponding
+                to the current local symbol table.  With a module,
+                class or class instance object as argument   
+                returns a dictionary corresponding to the object's
+                symbol table. Useful with "%" formatting operator.
+
+xrange(start [, end [, step]])
+                Like range(), but doesn't actually store entire list
+                all at once. Good to use in "for" loops when there is a
+                big range and little memory.
+
+
+
+  

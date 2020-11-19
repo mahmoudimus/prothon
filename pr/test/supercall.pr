@@ -1,0 +1,16 @@
+#!/usr/bin/env prothon
+
+object X:
+    def call_():
+        if self.call_ is super.call_:
+            print "Error: self.call_ is super.call_"
+            sys.exit(1)
+        return super.call_()
+
+Y = X()
+X()
+Y()
+    
+print """
+test passed
+"""

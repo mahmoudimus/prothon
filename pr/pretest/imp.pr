@@ -1,0 +1,14 @@
+#!/usr/bin/env prothon
+
+#  imp.pr
+
+sys.path.append!('../../pr/pretest')
+sys.path.append!('../pr/pretest')
+print sys.path
+
+import imp2
+
+print imp2.attrs_
+
+imp2.func(99)
+

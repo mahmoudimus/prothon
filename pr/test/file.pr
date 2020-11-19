@@ -1,0 +1,40 @@
+#!/usr/bin/env prothon
+
+f = TempTextFile()
+for i in 5:
+	f.write("line "+i+'\n')
+f.writeLines( ['line 5\n', 'line 6\n','line 7\n','line 8\n','line 9\n',])
+f.close()
+
+ref =  ['line 0\n','line 1\n','line 2\n','line 3\n','line 4\n',]
+ref += ['line 5\n','line 6\n','line 7\n','line 8\n','line 9\n',]
+
+f.open('r')
+x = f.read()
+print x
+if (x != ''.join(ref)): 
+	print "test failed: x != f"
+	sys.exit(1)
+
+f.seek(7)
+x = f.read(7)
+print x
+if (x != 'line 1\n'): 
+	print "test failed: x != 'line 1'"
+	sys.exit(1)
+
+f.seek(21)
+x = f.read(14)
+print x
+if (x != 'line 3\nline 4\n'): 
+	print "test failed: x != 'line 3line 4'"
+	sys.exit(1)
+
+x = f.readLines()
+ref = ['line 5\n','line 6\n','line 7\n','line 8\n','line 9\n',]
+print x
+if (''.join(x) != ''.join(ref)): 
+	print "test failed: x != 'line 5','line 6','line 7','line 8','line 9'"
+	sys.exit(1)
+
+print "\nall tests passed"

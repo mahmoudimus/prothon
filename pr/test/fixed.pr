@@ -1,0 +1,36 @@
+#!/usr/bin/env prothon
+
+object Fixed(Int):
+    dp = 2 
+    divisor = 100
+    
+    def call_(n=0, decimalplaces=2):
+        obj = newObject(self)
+        obj.dp = decimalplaces
+        obj.divisor = 10
+        obj.init_(n)   # binary data init here 
+        return obj
+
+object PrettyPrintFixed(Fixed): 
+
+    def init_(n):
+        Int.init_{self}(n)
+        # Set default print format width.
+        self.setPrintWidth(self.dp+5)
+        
+    def setPrintWidth(wid):
+        # Create string comprehension "%W.Pf"
+        # where W is wid and P  is selfdp
+        self.pattern =  "%%%i.%if" % (wid, self.dp) 
+        print self.pattern
+        
+    def str_(): 
+        return  self.pattern % (self / self.divisor)
+        
+print """
+This should print
+
+%6.1f 
+123456.7 
+"""
+print PrettyPrintFixed(1234567, 1)

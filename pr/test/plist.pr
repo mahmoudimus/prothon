@@ -1,0 +1,42 @@
+#!/usr/bin/env prothon
+
+def err(n):
+	print "failure number",n
+	sys.exit(1)
+
+x = Object()
+x2 = x()
+x3 = x2()
+x4 = x3()
+object x5(x4,x3,x2,x): pass
+
+if len(x5.protos_) != 4: err(-1)
+if x5.protos_[0] is not x4: err(0)
+if x5.protos_[1] is not x3: err(1)
+if x5.protos_[2] is not x2: err(2)
+if x5.protos_[3] is not x:  err(3)
+
+y = Object()
+a=1
+b=2
+c=3
+y.protos_ = [a,b,c]
+if len(y.protos_) != 3: err(4)
+if y.protos_[0] is not a: err(5)
+if y.protos_[1] is not b: err(6)
+if y.protos_[2] is not c: err(7)
+
+del y.protos_[1]
+if y.protos_ != [1,3]: err(8)
+if 1 not in y.protos_: err(9)
+if 3 not in y.protos_: err(10)
+y.protos_.insert!(1,2)
+if y.protos_ != [1,2,3]: err(11)
+y.protos_.append!(4)
+if y.protos_ != [1,2,3,4]: err(12)
+y.protos_.remove!(1)
+if y.protos_ != [2,3,4]: err(13)
+
+print """
+all tests passed
+"""

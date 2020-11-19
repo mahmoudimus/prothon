@@ -1,0 +1,31 @@
+#!/usr/bin/env prothon
+
+Animal = Object()
+with Animal:
+   def describe():
+       print "I am an animal."
+       self.make_noise()
+   def make_noise():
+     print "I make animal noise."
+   
+Mammal = Animal()
+with Mammal:
+   def describe():
+          print "I am a mammal."
+          super.describe()
+          self.make_noise()
+   def make_noise():
+     print "I make mammal noise."
+   
+Cat = Mammal()
+with Cat:
+     def describe():
+          print "I am a cat."
+          Mammal.describe{self}()
+          self.make_noise()
+     def make_noise():
+       print "meow"
+
+c = Cat()
+c.describe()
+

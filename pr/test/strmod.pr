@@ -1,0 +1,109 @@
+#!/usr/bin/env prothon
+
+# strmod.pr
+
+# TODO:
+#  *) More comprehensive tests, especially replace() and split().
+#  *) Test binary string handling (when parser is fixed).
+
+failures = 0
+
+s = "test %4d..%4.2e..%s" % (-12, 100/3, 'jhgdjhg')
+
+if s != 'test  -12..3.33e+01..jhgdjhg': 
+	print 'error 1'
+	print s
+	failures = failures+1
+	
+if "abCDefG".lower() != "abcdefg":
+	print "lower() failed!"
+	failures = failures+1
+
+if "abCDefG345%^&".lower() != "abcdefg345%^&":
+	print "lower() failed!"
+	failures = failures+1
+
+if "abCDefG".upper() != "ABCDEFG":
+	print "upper() failed!"
+	failures = failures+1
+
+if "+_098abCDefG".upper() != "+_098ABCDEFG":
+	print "upper() failed!"
+	failures = failures+1
+
+if "abCDefG".replace("CDe","456") != "ab456fG":
+	print "replace() failed!"
+	failures = failures+1
+
+if "abcdefg".capitalize() != "Abcdefg":
+	print "capitalize() failed!"
+	failures = failures+1
+
+if "a\tb\tcde".expandTabs() != "a        b        cde":
+	print "expandtabs() failed!"
+	failures = failures+1
+
+if " \t \r\n abc".lStrip() != "abc":
+	print "lstrip() failed!"
+	failures = failures+1
+
+if "abc \t \r\n ".rStrip() != "abc":
+	print "rstrip() failed!"
+	failures = failures+1
+
+if " \t \r\n abc \t \r\n ".strip() != "abc":
+	print "strip() failed!"
+	failures = failures+1
+
+if ".a.bc.def.ghij.".split('.') != ['', 'a', 'bc', 'def', 'ghij', '']:
+	print "split() failed!"
+	failures = failures+1
+
+if "a.bc.def.ghij".split('.') != ['a', 'bc', 'def', 'ghij']:
+	print "split() failed!"
+	failures = failures+1
+
+if "a.bc.def.ghij.".split('.') != ['a', 'bc', 'def', 'ghij', '']:
+	print "split() failed!"
+	failures = failures+1
+
+if "..a.bc.def.ghij.".split('.') != ['', '', 'a', 'bc', 'def', 'ghij', '']:
+	print "split() failed!"
+	failures = failures+1
+
+if "a.bc.def.ghij".split('a') != ['', '.bc.def.ghij']:
+	print "split() failed!"
+	failures = failures+1
+
+if "a.ab.abc.abcd".split('a') != ['', '.', 'b.', 'bc.', 'bcd']:
+	print "split() failed!"
+	failures = failures+1
+
+if ".a.ab.abc.abcd".split('a') != ['.', '.', 'b.', 'bc.', 'bcd']:
+	print "split() failed!"
+	failures = failures+1
+
+if ".a.ab.abc.abcd.".split('a') != ['.', '.', 'b.', 'bc.', 'bcd.']:
+	print "split() failed!"
+	failures = failures+1
+
+if "aaaaabaacaadaaaaabaacaad".split("aab") != ["aaa","aacaadaaa","aacaad"]:
+	print "split() failed!"
+	failures = failures+1
+
+if "aaaaabaacaadaaaaabaacaad".find("aab",0) != 3:
+	print "find() failed!"
+	failures = failures+1
+
+s = "%d" % 3333
+
+if s != '3333': 
+	print 'error 2'
+	print s
+	failures = failures+1
+
+if failures==0:
+	print '\nall tests passed\n'
+else:
+	print "%d failure(s) occurred!\n"%failures
+	sys.exit(1)

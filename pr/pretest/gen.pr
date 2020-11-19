@@ -1,0 +1,16 @@
+#!/usr/bin/env prothon
+
+gen _outer(n):
+    x = -1
+    def inner():
+        return outer.x
+    yield inner
+    for x in n:
+        yield x
+
+iter = _outer(10)
+inner = iter.next()
+
+print inner()
+for x in iter:
+    print x, inner()

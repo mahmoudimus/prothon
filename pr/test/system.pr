@@ -1,0 +1,13 @@
+#!/usr/bin/env prothon
+
+import os
+
+print
+print 'The following lines should be:'
+print 'hello'
+print '0'
+print
+
+ret = os.system("echo hello")
+print ret
+print

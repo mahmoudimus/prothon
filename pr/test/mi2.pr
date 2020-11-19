@@ -1,0 +1,53 @@
+#!/usr/bin/env prothon
+
+def refer(start, attrname):
+    mro = self.protoChain()
+    n = mro.len_()
+    i = 0
+    while i < n:
+        if mro[i] is start:
+            break
+        i += 1
+    if i == n:
+        raise AttributeError
+    while True:
+        i += 1
+        if i == n:
+            break
+        o = mro[i]
+        attrs = o.attrs_
+        if attrname in attrs:
+            a = attrs[attrname]
+            if a.hasProto?(Func):
+                return a 
+            return a
+    raise AttributeError
+
+object ModInt(Int):
+    modulo = 10
+    def call_(i=0):
+        call = refer(ModInt, 'call_')
+        return call{self}(i % self.modulo)
+
+    def add_(other):
+        if self.modulo != other.modulo:
+            raise TypeError
+        proto = self.protoChain()[1]
+        add = refer(ModInt, 'add_')
+        x =  proto(add{self}(other))
+        return x
+
+object Mod8Int(ModInt):
+    modulo = 8
+
+m = Mod8Int(0)
+n = Mod8Int(1)
+for i in 100:
+    if m != i % 8:
+        print "test failed:",i
+        sys.exit(1)
+    m = m + n
+
+print """
+All tests passed
+"""

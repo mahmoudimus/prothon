@@ -1,0 +1,180 @@
+
+			----- Prothon Release History ----
+
+Version 0.1.2 - Build 710 - 7/06/04
+	- print is now a function, not a keyword
+	- function-as-command feature allows print to be used without parens
+	- Added prop keyword and properties feature with wildcards
+	- Changed del_ to final_ so properties could use get_, set_, & del_
+	- a += b type assignments now always do a = a + b
+	- New in-place modify operators a +! b, a -! b, a *! b, etc.
+	- Formal parameter default values now evaluated at call time
+	- String now stored with native 24-bit ordinal values
+	- Split String type into seperate String and Bytes (binary) types
+	- Split File into File and TextFile
+	- Replaced String % operator with String.fmt()
+	- Added cmp_ and eq_? for strings of length 1 and Ints
+	- Added object-oriented Directory object and methods
+	- Added TempDir and TempFile (deleted at shutdown)
+	- Added basic DateTime object
+	- Added WeakRef object with callback feature on obj modification
+	- Added Slice object
+	- getItem_, setItem_, and delItem_ now allow any object indexing
+	- Finalization now called on shutdown
+	- Added built-in range() generator (not list function)
+	- Added List(iter_) constructor
+	- Octal constant format changed from 0377 to 0o377
+	- Octal esc sequence changed from \0377 to \o377
+	- except keyword no longer allowed alone, must use "except Exception"
+	- except syntax changed from "except exc, var" to "except exc as var"
+	- Function formal params now introspectable via simple attribute
+	- *args param local variable in func is now a tuple, not a list
+	- Added immutable check to dictionary function key parameter
+	- Added Dict.len_ and Dict.bool_?
+	- Moved File from extension module to built-in
+	- Changed File.stdxxx to sys.stdIn, sys.stdOut, and sys.stdErr
+	- changed Len, Cmp, len,  cmp,  chr,  ord to 
+			  len, cmp, len_, cmp_, chr_, ord_  
+	- changed Sys to sys, changed sys.ps1, sys.ps2 to sys.cons.ps1, 
+	  sys.cons.ps2
+	- Changed SQLite to sqlite, OS to os, Re to re
+	- Change symbol prefix from backtick (`var) to dollar-sign ($var)
+	- Changed console prompt from >>> to O>>
+	- Added many new *.pr test files
+	- Fixed raise keyword so second arg is doc_ attribute of first
+	- Fixed crash on printing recursive containers, now prints ...
+	- Fixed assignment from sequences to arg lists and for statements
+	- Fixed import in console
+	- Fixed bug in Func constructor
+	- Fixed bug in string.rstrip, string.strip, and string.find
+	
+Version 0.1.1 - Build 585 - 6/07/04
+	- Added super keyword
+	- Integers now have unlimited precision
+    - Added obj.protos_ list and obj.attrs_ dictionary
+    - Removed old obj.attrs() method
+    - Changed protoList() method to protoChain()
+	- added built-in function mainModule?() 
+	  which returns true if run in Main
+	- Dict constructor now takes normal Dict as param
+	- Added adict.pr, imp.pr, imp2.pr, plist.pr, &
+	  supercall.pr test files
+	- Fixed permission bug in binding operation
+	- Fixed bug in starting generator more than once
+	- Fixed bug in gen keyword
+	- Fixed import bug
+	- Fixed exception bug
+
+Version 0.1.0 - Build 532 - 5/21/04 - Weekly Release
+	- Removed symbols and capitalized globals
+	- added self, outer, and caller prefixes
+	- changed local/global scopes to scope chain
+	- Added obj.func{self}(args) calling syntax
+	- Added obj.func{self} method binding
+	- Added object statement
+	- changed special __var__ format to var_
+	- Added many String methods
+	- Support uninitialized binary objects and init_ on binary objects
+	- Init_ can now return new object
+	- Added Symbol object support as `var
+	- Added %x to String.mod_()
+	- Added Dict.len() and Len(dict)
+	- Added Object.unbind()
+	- Added Object.objId()
+	- Added -d command line flag to enable debug dumps
+	- Changed first Main module to "Main" from "Main1", second is "Main1"
+	- Fixed param mismatch with () and (*args, **kwargs)
+	- Fixed Race in Thread Startup
+	- Fixed bug in Dict when expanding size
+	- Fixed bug in nested For loops
+
+Version 0.0.6 - Build 420 - 4/26/04 - Weekly Release
+	- Added Prosist object store database module
+	- setProto and addProto now work on immutable objects
+	- Added test files: int.pr, modint.pr, prosist.pr
+	- Fixed permission bug in interactive console (I=1)
+	- Fixed string.__iter__() method
+
+Version 0.0.5 - Build 387 - 4/18/04 - Weekly Release
+
+	- Changed all method names to camelCase (from wide_names)
+	- Added DBM module - Supports external gdbm, nbdm, Berkeley db, and
+	  has built-in sdbm for all platforms.  Uses APR dbm support.
+	- Added SQLite module
+	- Started OS module with system() call.
+	- Added string % operator (sprintf)
+	- Added list comprehensions to language
+	- Added list.sort!() - List methods now complete.
+	- Added Dict methods - Dict methods now complete.
+	- New generation C macros for defining and checking method param types
+	- Added test files: dbm.pr, dict.pr, listcomp.pr, sqlite.pr, strmod.pr, 
+	  system-test.pr
+	- Exceptions checked properly during module initialization now
+
+Version 0.0.4 - Build 328 - 4/11/04 - Weekly Release
+
+	- Implemented new "landmine" security model
+	- Added Prothon Thread object and methods
+	- Added Prothon Mutex object and methods
+	- Removed lambda from language
+	- Added directed delegation "super": object^func()
+	- Added chained compares (a < b < c {ala Python})
+	- Added Object.clone() method that works for most objects
+	- Disabled File access for Guest permission level
+	- Added File.set_stdout() to avoid permission exception when 
+	  accessing File directly
+	- Using -i option now lets you view variables when script ends
+	- Added test files: chained.pr, defs.pr, and threads.pr
+	- Fixed non-directed delegation "super" for more than two levels
+	  of inheritance: ^func()
+	- Fixed problem of def always returning same function object each
+	  time def executed same function definition
+	- Fixed bug in param passing in __init__
+	- Internal types now use apr types
+
+Version 0.0.3 - Build 282 - 4/04/04 - Weekly Release
+
+	- Indents can now have spaces or tabs, but not mixed in blocks
+	- Added intelligent line continuations
+	- Changed call to __init__ to not use return value
+	- Added var? form for all functions that return True or False
+	- Added std{in,out,err} default File objects
+	- Fixed File read/write routines to check the flags used to open
+	  the files, to make sure read/write it suitable for this object.
+	- Reworked module handling. A module can be linked as a loadable or 
+	  as a built-in, without changes to the code or compilation.
+	- Added __init__ for String, List, Dict, so you can say List(), etc.
+	- Empty tuples and lists print like python now
+	- Added convenience macros to check prototypes of passed params
+	- Added obj.attrs() to get a list of attributes for an object
+	- Added generators for Tuple, List, & Dict
+	- Added List.cmp(), Tuple.cmp()
+	- Int, FLoat, String, Tuple, List, Dict are built-ins now, not Modules
+	- Changed copyright owner from Mark Hahn to Hahn Creative Applications
+	- Changed win32 Visual Studio projects from VS 2002 to VS 2003
+	- Added tests: closure.pr, init.pr, meow.pr, scope.pr, speed.pr, 
+	  stdio.pr, super.pr
+	- Fixed bug when exceptions occured in Prothon code called from C code
+	- Fixed bug in formal params of type def x(label=value)
+	- Fixed super ( ^ ), definition still not good enough, under discussion
+	- Fixed del list[:] bug
+
+Version 0.0.2 - Build 190 - 3/28/04 - Weekly Release
+	- Fixed "not a" and "a is not b"
+	- Fixed Dict.__str__() on empty Dict
+	- Implemented -i and -c command line arguments
+	- Return value of functions with no return is None again
+	- String object can now hold binary data (embedded nulls)
+	- Added "unmutable" bit to object - write protects and faster
+	- Many Unix/Linux build system improvements, uses libtool and
+	  autoconf macros for most things now.
+	- Binary now supplied for Max OSX
+	- Fixed compatibility with all Bisons
+	- Added detection of APR during build.
+	- String processing is now "safe"
+	- Int moved from module to built-in
+	- Added msvcr70.dll to win32 release
+	- Conversion of sprintf to apr_snprintf
+
+
+Version 0.0.1 - Build 115 - 3/24/04 - Initial Release

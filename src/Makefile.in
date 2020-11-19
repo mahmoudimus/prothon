@@ -1,0 +1,38 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+top_builddir=@top_builddir@
+srcdir=@srcdir@
+
+include $(top_builddir)/Rules.mk
+
+TARGET=prothon
+
+BUILTIN_MOD_OBJS = builtins-core.o builtins-dict.o builtins-int.o \
+	builtins-list.o builtins-string.o builtins-tuple.o \
+	builtins-float.o builtins-thread.o builtins-attrdict.o \
+	builtins-protolist.o builtins-file.o builtins-time.o \
+	builtins-bytes.o
+
+OBJS = main.o $(BUILTIN_MOD_OBJS) object.o argproc.o clist.o lock.o \
+	memory_mgr.o parser.o prmalloc.o sys.o interp.o parser_routines.o \
+	symbol.o getline.o console.o pr_snprintf.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LINK) $(OBJS) -o $@
+
+install: $(TARGET)
+	$(INSTALL_DIR) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) $(TARGET) $(DESTDIR)$(bindir)/$(TARGET)
+
+distclean: clean
+	rm -f Makefile parser.c
+
+clean:
+	rm -fr *.o *.lo .libs $(TARGET) core
+
+parser.c: prothon.y
+	$(YACC) -o $@ $<

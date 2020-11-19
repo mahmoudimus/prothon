@@ -1,0 +1,58 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+sysconfdir = @sysconfdir@
+mandir = @mandir@
+abs_builddir = @abs_builddir@
+abs_srcdir = @abs_srcdir@
+
+PROTHON_DEFAULT_MODDIR = @PROTHON_DEFAULT_MODDIR@
+
+CC=@CC@
+LD=$(CC)
+YACC=@YACC@
+
+VPATH = $(srcdir)
+
+CFLAGS=@CFLAGS@
+CPPFLAGS=@CPPFLAGS@ -I$(abs_srcdir)/include -I$(srcdir) \
+	-I$(abs_builddir)/include -DHAVE_CONFIG_H \
+	-DPROTHON_DEFAULT_MODDIR="\"$(PROTHON_DEFAULT_MODDIR)\""
+
+LDFLAGS=@LDFLAGS@
+LIBS=@LIBS@
+
+INSTALL=@INSTALL@
+INSTALL_DATA=$(INSTALL) -m 644
+INSTALL_PROGRAM=$(INSTALL) -m 755
+INSTALL_DIR=$(INSTALL) -d -m 755
+
+LIBTOOL = @LIBTOOL@
+LTFLAGS = --silent
+LINK_LIBTOOL = @LINK_LIBTOOL@
+LINK_LD = @LINK_LD@
+
+COMPILE = $(CC) $(CPPFLAGS) $(CFLAGS) $(INCLUDES)
+LT_COMPILE = $(LIBTOOL) $(LTFLAGS) --mode=compile $(COMPILE)
+
+LINK = $(LIBTOOL) $(LTFLAGS) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) \
+	$(LINK_LIBTOOL) $(LIBS)
+LINK_MODULE = $(LIBTOOL) $(LTFLAGS) --mode=link $(CC) -module -avoid-version \
+	-module -rpath $(PROTHON_DEFAULT_MODDIR) \
+	$(CFLAGS) $(LDFLAGS) $(LINK_LIBTOOL) $(LIBS)
+
+LIB_INSTALL = $(LIBTOOL) --mode=install $(INSTALL)
+
+.SUFFIXES:
+.SUFFIXES: .c .lo .o .la-a .la
+
+.c.o:
+	$(COMPILE) -o $@ -c $<
+
+.c.lo:
+	$(LT_COMPILE) -o $@ -c $<

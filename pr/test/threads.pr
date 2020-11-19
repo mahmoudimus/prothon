@@ -1,0 +1,30 @@
+#!/usr/bin/env prothon
+
+# threads.pr
+
+Finished_thread_count = 0
+
+def func(n, d):
+	my_thread = currentThread()
+	print my_thread, "started"
+	for i in n:
+		Sleep(d)
+		print my_thread, "has been running",(i+1)*d,'seconds'
+	outer.Finished_thread_count += 1
+
+a = Thread(func, [10, 1.0000], "A")
+b = Thread(func, [ 5, 2.0000], "B")
+c = Thread(func, [ 3, 3.3333], "C")
+
+/*
+these cause an apr_error ???
+a.join()
+b.join()
+c.join()
+*/
+
+while Finished_thread_count < 3:
+	Sleep(0.1)
+print
+print 'All threads finished'
+print

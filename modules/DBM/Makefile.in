@@ -1,0 +1,28 @@
+# prothon
+#
+# Copyright (C) 2004 Mark Hahn <mark@prothon.org>
+
+srcdir=@srcdir@
+top_builddir=@top_builddir@
+
+include $(top_builddir)/Rules.mk
+
+MODULE_NAME=DBM
+
+TARGET = $(MODULE_NAME).la
+
+OBJS = $(MODULE_NAME).lo
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LINK_MODULE) $(OBJS) -o $@
+
+install: $(TARGET)
+	$(LIB_INSTALL) $(TARGET) $(DESTDIR)$(PROTHON_DEFAULT_MODDIR)/
+
+distclean: clean
+	rm -f Makefile
+
+clean:
+	rm -fr *.o *.lo *.la .libs
